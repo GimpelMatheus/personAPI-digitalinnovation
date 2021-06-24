@@ -3,6 +3,7 @@ package one.digitalinnovation.personAPI.service;
 import one.digitalinnovation.personAPI.dto.MessageResponseDTO;
 import one.digitalinnovation.personAPI.dto.request.PersonDTO;
 import one.digitalinnovation.personAPI.entity.Person;
+import one.digitalinnovation.personAPI.exception.PersonNotFoundException;
 import one.digitalinnovation.personAPI.mapper.PersonMapper;
 import one.digitalinnovation.personAPI.repository.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 //classe para regras de negócio
@@ -46,5 +48,12 @@ public class PersonService {
         return allPeople.stream().map(
                 personMapper::toDTO
         ).collect(Collectors.toList());
+    }
+
+    public PersonDTO findById(Long id) throws PersonNotFoundException {
+        Person person = personRepository.findById(id).orElseThrow(() -> new PersonNotFoundException(id));
+        //Optinal evita verificações como estar nulo
+
+        return personMapper.toDTO(person);
     }
 }
