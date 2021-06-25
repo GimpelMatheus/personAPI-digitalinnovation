@@ -38,16 +38,16 @@ São necessários os seguintes pré-requisitos para a execução do projeto dese
 
 Problemas e soluções durante o desenvolvimento:
     
-    * Automatic deployment of ***** failed
+* Automatic deployment of ***** failed
         Ainda em busca de soluções
-
-    * MapStruct implementation is not working in Spring Boot Web Application
+  
+* MapStruct implementation is not working in Spring Boot Web Application
     * java: Internal error in the mapping processor: java.lang.NullPointerException: Cannot invoke "java.net.URL.toExternalForm()" because "resource" is null
           <groupId>org.mapstruct</groupId>
           <artifactId>mapstruct</artifactId>
           <version>**${org.mapstruct.version}**</version>
     
-    * “Database "C:/Users/azhya/test" not found, either pre-create it or allow remote database creation (not recommended in secure environments) [90149-200] 90149/90149” Code Answer
+* “Database "C:/Users/azhya/test" not found, either pre-create it or allow remote database creation (not recommended in secure environments) [90149-200] 90149/90149” Code Answer
         
         Step 1. In application.properties:
         spring.h2.console.enabled=true
