@@ -34,12 +34,10 @@ public class PersonService {
     public MessageResponseDTO createPerson(PersonDTO personDTO){
 
         Person personToSave  = personMapper.toModel(personDTO);
+        Person savedPerson = personRepository.save(personToSave);
+        //RequestBody fala que ta vindo por uma requisição
 
-        Person savedPerson = personRepository.save(personToSave); //RequestBody fala que ta vindo por uma requisição
-        return MessageResponseDTO.
-                builder()
-                .message("Created Person with ID " + savedPerson.getId())
-                .build();
+        return createMessageResponse(savedPerson.getId(), "Created Person with ID ");
     }
 
 
@@ -66,5 +64,22 @@ public class PersonService {
     private Person verifyIfExists(Long id) throws  PersonNotFoundException{
         return personRepository.findById(id)
                 .orElseThrow(() -> new PersonNotFoundException(id));
+    }
+
+    public MessageResponseDTO updateById(Long id, PersonDTO personDTO) throws PersonNotFoundException {
+
+        verifyIfExists(id);
+
+        Person personToUpdate  = personMapper.toModel(personDTO);
+
+        Person updatedPerson = personRepository.save(personToUpdate); //RequestBody fala que ta vindo por uma requisição
+        return createMessageResponse(updatedPerson.getId(), "Updated Person with ID ");
+    }
+
+    private MessageResponseDTO createMessageResponse(Long id, String s) {
+        return MessageResponseDTO.
+                builder()
+                .message(s + id)
+                .build();
     }
 }
