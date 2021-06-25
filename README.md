@@ -39,7 +39,7 @@ São necessários os seguintes pré-requisitos para a execução do projeto dese
 Problemas e soluções durante o desenvolvimento:
     
 * Automatic deployment of ***** failed
-        Ainda em busca de soluções
+        - Ainda em busca de soluções -
   
 * MapStruct implementation is not working in Spring Boot Web Application
 * java: Internal error in the mapping processor: java.lang.NullPointerException: Cannot invoke "java.net.URL.toExternalForm()" because "resource" is null
