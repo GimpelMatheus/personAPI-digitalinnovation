@@ -48,7 +48,8 @@ Problemas e soluções durante o desenvolvimento:
         <artifactId>mapstruct</artifactId>
         <version>**${org.mapstruct.version}**</version>
     ```
-  
+    colocando a versão 1.4.2.Final vai rodar com tranquilidade.
+
 * “Database "C:/Users/azhya/test" not found, either pre-create it or allow remote database creation (not recommended in secure environments) [90149-200] 90149/90149” Code Answer
         
         Step 1. In application.properties:
