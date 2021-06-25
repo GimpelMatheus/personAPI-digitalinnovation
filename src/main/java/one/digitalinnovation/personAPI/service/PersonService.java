@@ -1,5 +1,6 @@
 package one.digitalinnovation.personAPI.service;
 
+import lombok.AllArgsConstructor;
 import one.digitalinnovation.personAPI.dto.MessageResponseDTO;
 import one.digitalinnovation.personAPI.dto.request.PersonDTO;
 import one.digitalinnovation.personAPI.entity.Person;
@@ -17,6 +18,7 @@ import java.util.stream.Collectors;
 
 //classe para regras de negócio
 @Service
+@AllArgsConstructor(onConstructor = @__(@Autowired))
 public class PersonService {
 
     private PersonRepository personRepository;
@@ -25,11 +27,8 @@ public class PersonService {
         //cte da classe criada por nós
 
     //injeção de dependências e inversão de controle
-    @Autowired //Spring injeta uma implementação aqui pra dentro, somente este contrato
-    public PersonService(PersonRepository personRepository) {
-        //facilita para criar testes unitários
-        this.personRepository = personRepository;
-    }
+    //Spring injeta uma implementação aqui pra dentro, somente este contrato
+    //facilita para criar testes unitários
 
     public MessageResponseDTO createPerson(PersonDTO personDTO){
 
